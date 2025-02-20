@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.com">
+<head>
+<meta charset="ISO-8859-1">
+<title>Registration</title>
+ <link rel="stylesheet" th:href="@{/CSS/register.css}">
+ <link rel="stylesheet"
+  href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.6.0/css/all.min.css" integrity="sha512-Kc323vGBEqzTmouAECnVceyQqyqdsSiqLQISBL29aUW4U/M7pSPA/gEUZQqv1cwx4OnYxTxve5UMg5GT6L4JJg==" crossorigin="anonymous" 
+ referrerpolicy="no-referrer" />
+</head>
+<body>
+<div class="container">
+    <div id="Box">
+      <h1 id="ttl">Enter your details</h1>
+   <form action="registration" method="post"  onsubmit="return validateRegistration(event)">
+    <label>Enter the name:</label>
+    <input class="fields" type="text" name="name" id="name" placeholder="Enter the Name">
+    <br> <span id="msg-name"></span>
+    <br><br>
+     <label>Enter the email:</label>
+    <input class="fields" type="email" name="email" id="email" placeholder="Enter the Email">
+     <br><span id="msg-email"></span>
+    <br><br>
+     <label>Enter the password:</label>
+    <input class="fields" type="password" name="password" id="password" placeholder="Enter the Password">
+     <br><span id="msg-password"></span>
+    <br><br>
+     <label>Gender:</label>
+    M<input type="radio" name="gender" value="Male">
+    F<input type="radio" name="gender" value="Female">
+    O<input type="radio" name="gender" value="Other">
+    <br><br>
+     <label>Enter the PhoneNo:</label>
+    <input class="fields" type="number" name="phone" id="phone" placeholder="Enter Phone Number">
+      <br><span id="msg-phone"></span>
+    <br><br>
+     <label>Address:</label>
+     <textarea class="fields" rows="" cols="" name="address" placeholder="Enter Your Address"></textarea>
+     <br><br>
+     <input class="btn" type="submit" value="REGISTER">
+    <br><br>
+   </form>
+    </div>
+    </div>
+    <footer><h1>copyright <a href="#"><i class="fa-solid fa-copyright"></i></a>MovieFlix 2024</h1></footer>
+    <script type="text/javascript">
+    function validateField(field, message, condition) {
+        const msgField = document.getElementById(`msg-${field}`);
+        msgField.innerHTML = condition ? "" : message;
+        return condition;
+    }
+
+    function validateRegistration(event) {
+        const name = document.getElementById("name").value;
+        const email = document.getElementById("email").value;
+        const password = document.getElementById("password").value;
+        const phone = document.getElementById("phone").value;
+
+        // Validation rules
+        const isNameValid = validateField("name", "Name should not be empty", name !== "");
+        const isEmailValid = validateField("email", "Email should not be empty", email !== "");
+        const isPasswordValid = validateField("password", "Password should be at least 6 characters long", password.length >= 6);
+        const isPhoneValid = validateField("phone", "Phone Number should be at least 10 digits long", !isNaN(phone) && phone.length >= 10);
+        console.log(isEmailValid)
+        const isValid = isNameValid && isEmailValid && isPasswordValid && isPhoneValid;
+
+        if (!isValid) {
+            event.preventDefault();  // Prevent form submission if validation fails
+        }
+
+        return isValid;  // Return the validation status
+    }
+</script>
+    
+</body>
+</html>

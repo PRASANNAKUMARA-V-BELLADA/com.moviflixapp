@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="ISO-8859-1">
+<title>Login fail</title>
+<style type="text/css">
+body{
+  background-color:lightblue;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  min-height: 99vh;
+}
+#cnt{
+  padding:100px;
+  border: 3px double red;
+  text-align: center;
+  background-color:tomato;
+}
+
+  h1{
+    color: white;
+    font-family: serif;
+    font-size: 30px;
+  }
+  #btn:hover {
+	background-color: #9370db;
+	width:80px;
+	height: 30px;
+}
+</style>
+<script>
+        window.onload = function() {
+            alert("Login Failed, Inavalid Credential");
+        };
+    </script>
+</head>
+<body>
+<div id="cnt">
+  <h1>Login fail please enter valid credentials</h1>
+  <a href="map-login"> <input id="btn" type="submit" value="login"></a>
+  </div>
+</body>
+</html>

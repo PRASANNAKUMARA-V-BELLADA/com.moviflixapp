@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="ISO-8859-1">
+<title>Admin home</title>
+<style type="text/css">
+ body {
+	background-image:url('/Images/adminhome.png');
+}
+.container{
+    display: flex;
+	justify-content: center;
+	align-items: center;
+	height: 100vh;
+}
+.Box{
+ background-color: rgba(123,230,155,0.5);
+ padding: 20px;
+ border: 2px solid blue;
+ box-shadow: 0 0 20px 20px yellow;
+}
+.feild{
+ width: 100%;
+ height: 30px;
+ border-radius: 10px;
+}
+.feild:hover {
+	transform:scale(1.1);
+	background-color: lime;
+}
+
+</style>
+</head>
+<body>
+<div class="container">
+ <div class="Box">
+  <h1 style="background-color: purple;font-family: cursive;">Admin login success</h1>
+  <a href="view-users"><input class="feild" type="submit" value="View Users"></a>
+  <br><br>
+  <a href="add-movies"><input class="feild" type="submit" value="add movies"></a>
+  <br><br>
+  <a href="view-movies"><input class="feild" type="submit" value="View Movies"></a>
+  <br><br>
+  <a href="logout"><input class="feild" type="submit" value="Logout"></a>
+  <br><br>
+  </div>
+  </div>
+</body>
+</html>

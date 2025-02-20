@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.com">
+<head>
+<meta charset="ISO-8859-1">
+<title>Movie list</title>
+<link rel="stylesheet" th:href="@{/CSS/viewAdminMovie.css}" >
+</head>
+<body>
+ <h1>Movies list Below:</h1> 
+<table  class="tableDesign">
+    <thead>
+       <tr>
+          <th>MovieId</th>
+          <th>Movie Name</th>
+          <th>Movie Link</th>
+          <th>Movie Genre</th>
+          <th>Movie Cast</th>
+          <th>Movie Director</th>
+          <th>Delete</th>
+       </tr>
+    </thead>
+    <tbody>
+       <tr th:each="movie : ${movies}">
+          <td th:text="${movie.id}"></td>
+          <td th:text="${movie.mname}"></td>
+          <td th:utext="${movie.mlink}"></td>
+          <td th:text="${movie.genre}"></td>
+          <td th:text="${movie.mcast}"></td>
+          <td th:text="${movie.mdirector}"></td>
+          <td> 
+           <a href="#" th:onclick="'deleteMovie(' + ${movie.id} + '); return false;'">Delete</a>
+          </td>
+       </tr>
+    </tbody>
+</table>
+
+<script>
+function deleteMovie(id) { // Function name changed to match the call
+    console.log("Deleting Movie: " + id); // Debug log to ensure function is triggered
+    const confirmed = confirm(`Are you sure you want to delete the Movie with ID: ${id}?`);
+    if (confirmed) {
+        fetch(`DeleteMovie/${id}`, {  // Send DELETE request to the controller
+            method: 'DELETE'
+        })
+        .then(response => {
+            if (response.ok) {
+                alert(`Movie  with id "${id}" was deleted successfully.`);
+                window.location.reload();  // Reload the page after successful deletion
+            } else {
+                alert(`Error deleting Movie name with id "${id}".`);
+            }
+        })
+        .catch(error => {
+            console.error('Error:', error);
+            alert('Failed to delete Movie.');
+        });
+    }
+}
+</script>
+ 
+</body>
+</html>

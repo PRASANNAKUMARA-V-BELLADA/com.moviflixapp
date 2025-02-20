@@ -1,0 +1,188 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.com">
+<head>
+<meta charset="ISO-8859-1">
+<title>Insert title here</title>
+  <style type="text/css">
+    body{
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      height: 100vh;
+      background: url('/Images/Movie2.jpg');
+    }
+    .Container{
+     border: 2px solid red;
+     padding: 20px;
+     background-color: lime;
+     font-family: cursive;
+     width: 270px;
+     border-radius: 60px;
+    }
+    h1{
+      font-family: fantasy;
+      font-size: 50px;
+    }
+    div {
+	 padding: 10px;
+    }
+    .feilds{
+      width:100%;
+      border-radius:30px;
+    }
+    .btn{
+      width: 100%;
+      border-radius: 20px;
+      background-color: rgb(255, 255, 128);
+      font-family: cursive;
+      padding: 10px;
+    }
+    h1{
+    text-align: center;
+    height: 20px;
+    }
+    .main{
+      display: flex;
+      flex-direction: row;
+      justify-content: space-around;
+      height: 15px;
+    }
+    .icon{
+     width:30px;
+     height:20px;
+     background-color:yellow;
+     border-radius: 100px;
+     text-align: center;
+    }
+    #or{
+    text-align:center;
+    height: 20px;
+    }
+    .entry{
+     height:40px;
+     width:220px;
+     border-radius: 40px;
+     font-size: 20px;
+     padding-left: 20px;
+    }
+    .icon:hover {
+	width: 40px;
+	background-color:#ff5ccd;
+}
+.btn:hover{background-color: blue;height: 45px;}
+    .fa-brands{
+	color: blue;
+}
+    .fa-brands:hover {
+	width: 40px;
+}
+span {
+	color: red;
+	margin-left: 30px;
+}
+
+    
+  </style>
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.6.0/css/all.min.css" 
+  integrity="sha512-Kc323vGBEqzTmouAECnVceyQqyqdsSiqLQISBL29aUW4U/M7pSPA/gEUZQqv1cwx4OnYxTxve5UMg5GT6L4JJg==" 
+  crossorigin="anonymous" referrerpolicy="no-referrer" />
+</head>
+<body>
+   
+   <div class="Container">
+  <form action="loginMadu" method="post" onsubmit="handleRememberMe(event)">
+    <h1>Sign in With</h1>
+    <div class="main">
+      <div class="icon">
+       <a href="https://accounts.google.com/"> <i class="fa-brands fa-google"></i></a>
+      </div>
+      <div class="icon">
+       <a href="https://facebook.com"><i class="fa-brands fa-facebook"></i></a>
+      </div>
+      <div class="icon">
+     <a href="https://instagram.com"><i class="fa-brands fa-instagram"></i></a>   
+      </div>
+    </div>
+    <div id="or">
+     <p>---------OR---------</p>
+    </div>
+    <div class="feilds">
+    <i class="fa-solid fa-user"></i>
+    <input id="email" class="entry" type="email" name="email" placeholder="Enter Your Email" onkeyup="validateEmail()">
+    <span id="er-email"></span>
+    </div>
+  
+    <div class="feilds">
+    <i class="fa-solid fa-lock"></i>
+    <input id="pas" class="entry" type="password" name="password" placeholder="Enter Password" onkeyup="validatePassword()">
+    <span id="er-pas"></span>
+    </div>
+       
+    <div>
+      <label><input class="f" id="rememberMe" type="checkbox">Remember me</label>
+    </div>
+    <input class="btn" type="submit" value="LOGIN">
+    <div>
+     <a href="Forgot">Forgot Password</a>
+    </div>
+  </form>
+  </div>
+  <script>
+  // Load remembered username if available
+  window.onload = function() {
+    const savedEmail = localStorage.getItem("rememberedEmail");
+    if (savedEmail) {
+      document.getElementById("email").value = savedEmail;
+      document.getElementById("rememberMe").checked = true;
+    }
+  };
+  function handleRememberMe(event) {
+	  event.preventDefault();  // Prevent the form from submitting immediately
+
+	  const email = document.getElementById("email").value;
+	  const password = document.getElementById("pas").value;
+	  const rememberMe = document.getElementById("rememberMe").checked;
+
+
+	  // If "Remember me" is checked, store the username in localStorage
+	  if (rememberMe) {
+	    localStorage.setItem("rememberedEmail",email );
+	  } else {
+	    localStorage.removeItem("rememberedEmail");
+	  }
+	  if (validateEmail() && validatePassword()) {
+	        // Submit the form after processing
+	        event.target.submit(); 
+	    }
+	}
+
+
+  
+   function validateEmail(){
+	   var eml=document.getElementById("email");
+	   var err=document.getElementById("er-email");
+	   if(eml.value.match(/^[A-Za-z\._\-0-9]*[@][A-Za-z]*[\.][a-z]{2,4}$/)){
+		   err.innerHTML="";
+		   return true;
+	   }
+	   else{
+		   err.innerHTML="Please Enter valid Email";
+		   return false;
+	   }  
+   }
+   function validatePassword(){
+	   var pas=document.getElementById("pas").value;
+	   var er_pas=document.getElementById("er-pas");
+	   if(pas.length<6){
+		   er_pas.innerHTML="Please Enter Valid Password";
+		   return false;
+	   }
+	   else{
+		   er_pas.innerHTML="";
+		   return true;
+	   } 
+   }
+   
+  </script>
+</body>
+</html>

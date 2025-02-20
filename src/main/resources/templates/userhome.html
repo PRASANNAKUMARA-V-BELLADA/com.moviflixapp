@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.com">
+<head>
+<meta charset="ISO-8859-1">
+<title>User home</title>
+<style type="text/css">
+ Body{
+  background-color: rgba(100,100,225,0.3);
+ }
+ .container{
+   display:flex;
+   justify-content:center;
+   align-items: center;
+   background-image: url('/Images/Movie3.png');
+   background-position:center;
+   background-size:cover;
+   background-repeat: no-repeat;
+   background-color: rgba(125,100,225,0.5);
+ }
+ #Box{
+ display: flex;
+  align-items: center;
+ border-radius:20px;
+ padding:30px;
+  background-color:rgba(35, 206, 235, 0.5);
+  height: 600px;
+  border: 2px solid red;
+ }
+ .feild{
+  border-radius: 10px;
+  background-color:blue;
+  padding: 30px;
+  font-size: 30px;
+  color: white;
+  font-family: cursive;
+  width: 100%;
+ }
+ span{
+  color: tomato;
+ }
+</style>
+</head>
+<body>
+<div class="container">
+<h1 style="background-color:rgba(135, 206, 235, 0.9);font-family: fantasy; ">Welcome To <span>MovieFlix ></span></h1>
+<div id="Box">
+<div class="element">
+  <a href="exploremovies"><button class="feild" type="submit">Explore Movies</button> </a>
+  <br><br>
+  <a href="UpdateUser"><input class="feild" type="submit" value="UpdateProfile"></a>
+  <br><br>
+  <a href="logout"><input class="feild" type="submit"  value="Logout"></a>
+  </div>
+  </div>
+  </div>
+</body>
+</html>

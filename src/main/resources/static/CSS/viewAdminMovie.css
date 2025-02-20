@@ -1,0 +1,93 @@
+h1{
+	text-align: center;
+	font-family: sans-serif;
+	color:#f5a6dd;
+	text-decoration: underline;
+}
+.tableDesign {
+    width: 700px;
+    border-collapse: collapse;
+    margin: 20px 0;
+    font-size: 18px;
+    text-align: left;
+}
+
+.tableDesign th, .tableDesign td {
+    padding: 12px 15px;
+    border: 1px solid #ddd;
+}
+
+/* Table Header Styling */
+.tableDesign thead {
+    background-color: #343a40;
+    color: #ffffff;
+}
+
+.tableDesign th {
+    font-weight: bold;
+    text-transform: uppercase;
+    letter-spacing: 0.05em;
+}
+
+/* Table Row Styling */
+.tableDesign tbody tr {
+    background-color: #f9f9f9;
+}
+
+.tableDesign tbody tr:nth-child(even) {
+    background-color: #f1f1f1;
+}
+
+.tableDesign tbody tr:hover {
+    background-color:#93cff5;
+    cursor: pointer;
+}
+
+
+/* Link Styling */
+.tableDesign a {
+    text-decoration: none;
+    color: #007bff;
+    font-weight: bold;
+}
+
+.tableDesign a:hover {
+    color: #0056b3;
+    text-decoration: underline;
+}
+
+/* Delete Button Styling */
+.tableDesign a:active {
+    color: red;
+}
+
+.tableDesign td a {
+    padding: 5px 10px;
+    background-color: #ff4d4d;
+    color: #ffffff;
+    border-radius: 4px;
+    transition: background-color 0.3s ease;
+}
+
+.tableDesign td a:hover {
+    background-color: #ff1a1a;
+    text-decoration: none;
+}
+.tableDesign td{
+	font-family: monospace;
+	font-size: 1.2em;
+}
+.tableDesign td:nth-child(2) {
+	color: blue;
+}
+
+/* Responsive Design */
+@media screen and (max-width: 768px) {
+    .tableDesign {
+        font-size: 14px;
+    }
+
+    .tableDesign th, .tableDesign td {
+        padding: 10px;
+    }
+}

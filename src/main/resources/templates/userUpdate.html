@@ -1,0 +1,158 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.com">
+<head>
+<meta charset="ISO-8859-1">
+<title>Update Your Details</title>
+<style>
+    /* Basic reset */
+    * {
+        margin: 0;
+        padding: 0;
+        box-sizing: border-box;
+    }
+
+    /* Body styles */
+    body {
+        font-family: Arial, sans-serif;
+        background-color:hotpink;
+        padding: 20px;
+    }
+
+    /* Container for centering the form */
+    .form-container {
+        max-width: 500px;
+        margin: 0 auto;
+        background-color: white;
+        padding: 20px;
+        border-radius: 8px;
+        box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+    }
+
+    h2 {
+        text-align: center;
+        margin-bottom: 20px;
+        color: #333;
+    }
+
+    /* Label and input styles */
+    label {
+        font-size: 1.1rem;
+        color: #555;
+        margin-bottom: 8px;
+        display: block;
+    }
+
+    input, textarea {
+        width: 100%;
+        padding: 10px;
+        margin-bottom: 15px;
+        border: 1px solid #ccc;
+        border-radius: 4px;
+        font-size: 1rem;
+        color: #333;
+    }
+
+    textarea {
+        resize: vertical;
+    }
+
+    /* Button styles */
+    button {
+        width: 100%;
+        padding: 12px;
+        background-color: #4CAF50;
+        color: white;
+        font-size: 1.1rem;
+        border: none;
+        border-radius: 4px;
+        cursor: pointer;
+        transition: background-color 0.3s;
+    }
+
+    button:hover {
+        background-color: #45a049;
+    }
+
+    /* Focus styles for inputs */
+    input:focus, textarea:focus {
+        outline: none;
+        border-color: #4CAF50;
+    }
+
+    /* Responsive design for smaller screens */
+    @media (max-width: 600px) {
+        .form-container {
+            padding: 15px;
+        }
+
+        h2 {
+            font-size: 1.5rem;
+        }
+    }
+
+</style>
+</head>
+<body>
+   <div class="form-container">
+       <h2>Update Your Details</h2>
+       <form id="updateForm">
+           <label for="name">Name:</label>
+           <input type="text" name="name" required/>
+           <br>
+           <label for="email">Email:</label>
+           <input type="email" name="email" required/>
+           <br>
+           <label for="phone">Phone:</label>
+           <input type="text" name="phone" required/>   
+           <br>
+           <label>Address:</label>
+           <textarea class="fields" rows="3" cols="30" name="address" placeholder="Enter Your Address"></textarea>
+           <br>
+
+           <button type="button" onclick="submitForm(event)">Update User</button>
+       </form>
+   </div>
+
+<script>
+    function submitForm(event) {
+        // Prevent the default form submission
+        event.preventDefault();
+
+        // Get form data
+        const form = document.getElementById('updateForm');
+        const formData = new FormData(form);
+        const name = formData.get('name');
+        const email = formData.get('email');
+        const phone = formData.get('phone');
+        const address = formData.get('address');
+
+        // Use Fetch API to send PUT request
+        fetch(`UpdateMadu`, {
+            method: 'PUT',
+            headers: {
+                'Content-Type': 'application/json'
+            },
+            body: JSON.stringify({
+                name: name,
+                email: email,
+                phone: phone,
+                address: address
+            })
+        })
+        .then(response => {
+            if (response.ok) {
+                alert("Successfully updated user");
+                window.location.href = '/viewusers';
+            } else {
+                // Handle error
+                alert("Failed to update user");
+            }
+        })
+        .catch(error => {
+            console.error('Error:', error);
+        });
+    }
+</script>
+
+</body>
+</html>

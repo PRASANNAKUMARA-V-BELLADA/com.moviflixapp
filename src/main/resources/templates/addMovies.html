@@ -1,0 +1,118 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="ISO-8859-1">
+<title>Movie Add here</title>
+<style type="text/css">
+ body {
+	background-image: url('/Images/addMovies.png');
+	background-size: cover;
+	background-repeat: no-repeat;
+	display: flex;
+	justify-content: center;
+	align-items: center;
+	height: 400px;
+}
+.container{
+margin-top:20px;
+ color: blue;
+ font-size: 20px;
+ border:3px double yellow;
+ padding: 20px;
+ font-family: sans-serif;
+ background-color: rgba(150,199,219,0.5);
+}
+.feild{
+ border-radius: 5px;
+ background: rgba(233,244,167,0.6);
+}
+.feildcast{
+ width: 190px;
+  border-radius: 5px;
+ background: rgba(233,244,167,0.6);
+}
+#cnt{
+ text-align: center;
+ font-weight: bold;
+}
+
+
+.btns{
+ text-align: center;
+}
+.btn{
+ height:30px;
+ width:90px;
+ background-color: yellow;
+}
+
+.btn:hover {
+    transform:scale(1.1);
+	background-color: lime;
+}
+</style>
+</head>
+<body>
+<div class="container">
+<h1 style="background-color: lime;font-family: fantasy;">Add movies here</h1>
+  <form action="map-addMovies" method="post" onsubmit="return validate(event)">
+  <div id="cnt">
+    <label>Enter the Movie Name:</label>
+    <input id="mname" class="feild" type="text" name="mname">
+    <br><br>
+     <label>Paste the Movie Link:</label>
+    <input id="mlink" class="feild"  type="text" name="mlink">
+    <br><br>
+     <label>Movie Genre:</label>
+      <select class="feild" name="genre">
+          <option value="Action">Action</option>
+          <option value="Sci-Fi">Sci-Fi</option>
+          <option value="Horror">Horror</option>
+          <option value="Cartoon">Cartoon</option>
+          <option value="Comedy">Comedy</option>
+       </select>
+    <br><br>
+     <label>Cast:</label>
+    <input id="mcast" class="feildcast" type="text" name="mcast">
+    <br><br>
+     <label>Director:</label>
+    <input id="mdirector" class="feild" type="text" name="mdirector">
+    <br><br>
+    </div>
+    <div class="btns">
+    <input class="btn" type="submit" value="ADD-MOVIE">
+    </div>
+  </form>
+  </div>
+  <script type="text/javascript">
+   function validate(event){
+	   const mname=document.getElementById("mname").value.trim();
+	   const mlink=document.getElementById("mlink").value.trim();
+	   const mcast=document.getElementById("mcast").value.trim();
+	   const mdirector=document.getElementById("mdirector").value;
+	   var isValid=true;
+	   if(mname===""){
+		   alert("Movie name should not be empty!")
+		   isValid=false;
+	   }
+	   else if(mlink===""){
+		   alert("Movie link should not be empty!")
+		   isValid=false; 
+	   }
+	   else if(mcast===""){
+		   alert("Actor name should not be empty!")
+		   isValid=false;
+	   }
+	   else if(mdirector===""){
+		   alert("Movie Director should not be empty!")
+		   isValid=false;
+	   }
+	   
+	  if(!isValid){
+		  event.preventDefault();
+	  } 
+	  return isValid; 
+   }
+  </script>
+</body>
+</html>
